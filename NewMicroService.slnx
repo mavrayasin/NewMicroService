@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/services/" />
+  <Folder Name="/src/services/catalog/">
+    <Project Path="NewMicroService.Catalog.API/NewMicroService.Catalog.API.csproj" />
+  </Folder>
+  <Folder Name="/src/shared/">
+    <Project Path="NewMicroService.Shared/NewMicroService.Shared.csproj" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>
