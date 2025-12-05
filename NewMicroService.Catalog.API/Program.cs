@@ -1,6 +1,14 @@
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
+using NewMicroService.Catalog.API.Features.Categories;
+using NewMicroService.Shared;
+using NewMicroService.Catalog.API.Features.Categories.Create;
 using NewMicroService.Catalog.API.Options;
 using NewMicroService.Catalog.API.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using NewMicroService.Shared.Extensions;
+using NewMicroService.Catalog.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +21,6 @@ builder.Services.AddSwaggerGen();
 //    .ValidateOnStart();
 
 builder.Services.AddOptionsExt();
-
-
 //builder.Services.AddSingleton<IMongoClient>(sp =>
 //{
 //    var mongoOption = sp.GetRequiredService<MongoOption>();
@@ -29,8 +35,23 @@ builder.Services.AddOptionsExt();
 //});
 builder.Services.AddDatabaseServiceExt();
 
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateCategoryCommand>());
+builder.Services.AddCommonServiceExt(typeof(CatalogAssembly));
+
 
 var app = builder.Build();
+
+//app.MapPost("/categories", async (CreateCategoryCommand command, IMediator mediator) =>
+//{
+//  var result = await mediator.Send(command);
+
+//    return new ObjectResult(result)
+//    {
+//        StatusCode = result.Status.GetHashCode()
+//    };
+
+//});
+app.AddCategoryGroupEndpointExt();
 
 if (app.Environment.IsDevelopment())
 {
@@ -39,5 +60,5 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.Run();
+await app.RunAsync();
 
