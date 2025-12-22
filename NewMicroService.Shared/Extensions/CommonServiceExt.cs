@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +16,8 @@ namespace NewMicroService.Shared.Extensions
             services.AddHttpContextAccessor();
             services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining(assembly));
 
-            //services.AddFluentValidationAutoValidation();
-            //services.AddValidatorsFromAssemblyContaining(assembly);
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining(assembly);
             //services.AddScoped<IIdentityService, IdentityService>();
 
             //services.AddAutoMapper(assembly);

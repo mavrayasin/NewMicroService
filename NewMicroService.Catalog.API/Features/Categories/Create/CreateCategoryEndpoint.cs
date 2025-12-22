@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using NewMicroService.Shared.Extensions;
+using NewMicroService.Shared.Filters;
 
 namespace NewMicroService.Catalog.API.Features.Categories.Create
 {
@@ -9,7 +10,7 @@ namespace NewMicroService.Catalog.API.Features.Categories.Create
         {
             group.MapPost("/",
                     async (CreateCategoryCommand command, IMediator mediator) =>
-                        (await mediator.Send(command)).ToGenericResult());
+                        (await mediator.Send(command)).ToGenericResult()).AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
               
             return group;
         }
