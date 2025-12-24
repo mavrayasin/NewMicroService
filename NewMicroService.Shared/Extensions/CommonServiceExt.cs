@@ -18,9 +18,10 @@ namespace NewMicroService.Shared.Extensions
 
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining(assembly);
+
             //services.AddScoped<IIdentityService, IdentityService>();
 
-            //services.AddAutoMapper(assembly);
+            services.AddAutoMapper(assembly);
             //services.AddExceptionHandler<GlobalExceptionHandler>();
             return services;
         }
