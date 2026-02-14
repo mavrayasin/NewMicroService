@@ -1,10 +1,5 @@
-﻿using Amazon.Runtime.Internal;
-using MassTransit;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿
 using NewMicroService.Catalog.API.Repositories;
-using NewMicroService.Shared;
-using System.Net;
 
 namespace NewMicroService.Catalog.API.Features.Categories.Create
 {

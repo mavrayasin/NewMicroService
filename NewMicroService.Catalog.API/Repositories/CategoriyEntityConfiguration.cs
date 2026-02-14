@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MongoDB.EntityFrameworkCore.Extensions;
 using NewMicroService.Catalog.API.Features.Categories;
-using System.Reflection.Emit;
 
 namespace NewMicroService.Catalog.API.Repositories
 {

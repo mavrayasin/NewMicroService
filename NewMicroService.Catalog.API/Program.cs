@@ -1,14 +1,6 @@
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using MongoDB.Driver;
-using NewMicroService.Catalog.API.Features.Categories;
-using NewMicroService.Shared;
-using NewMicroService.Catalog.API.Features.Categories.Create;
-using NewMicroService.Catalog.API.Options;
-using NewMicroService.Catalog.API.Repositories;
-using Microsoft.AspNetCore.Mvc;
-using NewMicroService.Shared.Extensions;
 using NewMicroService.Catalog.API;
+using NewMicroService.Catalog.API.Features.Categories;
+using NewMicroService.Catalog.API.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 

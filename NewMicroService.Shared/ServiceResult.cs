@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using MediatR;
 using Refit;
 using ProblemDetails = Microsoft.AspNetCore.Mvc.ProblemDetails;
 
@@ -8,6 +9,8 @@ namespace NewMicroService.Shared
 {
     public class ServiceResult
     {
+        public interface IRequestByServiceResult<T> : IRequest<ServiceResult<T>>;
+        public interface IRequestByServiceResult : IRequest<ServiceResult>;
         [JsonIgnore] public HttpStatusCode Status { get; set; }
 
         public ProblemDetails? Fail { get; set; }

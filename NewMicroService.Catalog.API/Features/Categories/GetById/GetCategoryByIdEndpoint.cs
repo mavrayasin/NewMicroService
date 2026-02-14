@@ -1,14 +1,10 @@
-﻿using AutoMapper;
-using MediatR;
-using NewMicroService.Catalog.API.Features.Categories.Dtos;
+﻿using NewMicroService.Catalog.API.Features.Categories.Dtos;
 using NewMicroService.Catalog.API.Repositories;
-using NewMicroService.Shared;
-using NewMicroService.Shared.Extensions;
-using System.Net;
+using static NewMicroService.Shared.ServiceResult;
 
 namespace NewMicroService.Catalog.API.Features.Categories.GetById
 {
-    public record GetCategoryByIdQuery(Guid Id) : IRequest<ServiceResult<CategoryDto>>;
+    public record GetCategoryByIdQuery(Guid Id) : IRequestByServiceResult<CategoryDto>;
 
     public class GetCategoryByIdQueryHandler(AppDbContext context, IMapper mapper)
         : IRequestHandler<GetCategoryByIdQuery, ServiceResult<CategoryDto>>

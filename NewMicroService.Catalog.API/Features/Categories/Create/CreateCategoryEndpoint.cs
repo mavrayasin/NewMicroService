@@ -1,6 +1,4 @@
-﻿using MediatR;
-using NewMicroService.Shared.Extensions;
-using NewMicroService.Shared.Filters;
+﻿using NewMicroService.Shared.Filters;
 
 namespace NewMicroService.Catalog.API.Features.Categories.Create
 {

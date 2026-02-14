@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace NewMicroService.Catalog.API.Features.Categories.Create
+﻿namespace NewMicroService.Catalog.API.Features.Categories.Create
 {
     public class CreateCategoryCommonValidator : AbstractValidator<CreateCategoryCommand>
     {
