@@ -1,3 +1,4 @@
+using NewMicroService.Catalog.Api.Repositories;
 using NewMicroService.Catalog.API;
 using NewMicroService.Catalog.API.Features.Categories;
 using NewMicroService.Catalog.API.Features.Courses;
@@ -44,6 +45,11 @@ var app = builder.Build();
 //    };
 
 //});
+app.AddSeedDataExt().ContinueWith(x =>
+{
+    Console.WriteLine(x.IsFaulted ? x.Exception?.Message : "Seed data has been saved successfully");
+});
+
 app.AddCategoryGroupEndpointExt();
 app.AddCourseGroupEndpointExt();
 
