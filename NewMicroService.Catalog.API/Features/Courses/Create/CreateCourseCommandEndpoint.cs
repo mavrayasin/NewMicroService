@@ -15,6 +15,7 @@ namespace NewMicroService.Catalog.API.Features.Courses.Create
                 .Produces(StatusCodes.Status404NotFound)
                 .Produces<ProblemDetails>(StatusCodes.Status400BadRequest)
                 .Produces<ProblemDetails>(StatusCodes.Status500InternalServerError)
+                .MapToApiVersion(1, 0)
                 .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>();
 
             return group;

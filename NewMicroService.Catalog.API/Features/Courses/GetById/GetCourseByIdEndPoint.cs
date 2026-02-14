@@ -1,5 +1,4 @@
 ﻿using NewMicroService.Catalog.API.Features.Courses.Dtos;
-using NewMicroService.Catalog.API.Features.Courses.GetAll;
 
 namespace NewMicroService.Catalog.API.Features.Courses.GetById
 {
@@ -34,7 +33,8 @@ namespace NewMicroService.Catalog.API.Features.Courses.GetById
             group.MapGet("/{id:guid}",
                     async (Guid id,IMediator mediator) =>
                         (await mediator.Send(new GetCourseByIdQuery(id))).ToGenericResult())
-                .WithName("GetByIdCourses");
+                .WithName("GetByIdCourses")
+                .MapToApiVersion(1, 0);
 
             return group;
         }
