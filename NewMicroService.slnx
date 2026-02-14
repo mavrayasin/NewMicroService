@@ -1,6 +1,9 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/services/" />
+  <Folder Name="/src/services/basket/">
+    <Project Path="../NewMicroService.Basket.API/NewMicroService.Basket.API.csproj" Id="5c8403f1-2876-4f21-a5b6-3f909dac2ee1" />
+  </Folder>
   <Folder Name="/src/services/catalog/">
     <Project Path="NewMicroService.Catalog.API/NewMicroService.Catalog.API.csproj" />
   </Folder>
