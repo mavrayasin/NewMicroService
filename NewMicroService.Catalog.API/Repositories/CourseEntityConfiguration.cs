@@ -16,7 +16,7 @@ namespace NewMicroService.Catalog.API.Repositories
             builder.Property(c => c.Created).HasElementName("created");
             builder.Property(c => c.UserId).HasElementName("userId");
             builder.Property(c => c.CategoryId).HasElementName("categoryId");
-            builder.Property(c => c.Picture).HasElementName("picture");
+            builder.Property(c => c.PictureUrl).HasElementName("pictureUrl");
             builder.Property(c => c.Price).HasElementName("price");
             builder.Ignore(c => c.Category);
 

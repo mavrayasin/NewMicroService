@@ -8,7 +8,9 @@ namespace NewMicroService.Catalog.API.Features.Categories.Create
         {
             group.MapPost("/",
                     async (CreateCategoryCommand command, IMediator mediator) =>
-                        (await mediator.Send(command)).ToGenericResult()).AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
+                        (await mediator.Send(command)).ToGenericResult())
+                .WithName("CreateCategory")
+                .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
               
             return group;
         }

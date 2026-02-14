@@ -1,5 +1,6 @@
 using NewMicroService.Catalog.API;
 using NewMicroService.Catalog.API.Features.Categories;
+using NewMicroService.Catalog.API.Features.Courses;
 using NewMicroService.Catalog.API.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ var app = builder.Build();
 
 //});
 app.AddCategoryGroupEndpointExt();
+app.AddCourseGroupEndpointExt();
 
 if (app.Environment.IsDevelopment())
 {

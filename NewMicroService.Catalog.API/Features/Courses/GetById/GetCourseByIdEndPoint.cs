@@ -1,0 +1,42 @@
+﻿using NewMicroService.Catalog.API.Features.Courses.Dtos;
+using NewMicroService.Catalog.API.Features.Courses.GetAll;
+
+namespace NewMicroService.Catalog.API.Features.Courses.GetById
+{
+    public record GetCourseByIdQuery(Guid Id) : ServiceResult.IRequestByServiceResult<CourseDto>;
+
+    public class GetCourseByIdQueryHandler(AppDbContext context,IMapper mapper) : IRequestHandler<GetCourseByIdQuery, ServiceResult<CourseDto>>
+    {
+        public async Task<ServiceResult<CourseDto>> Handle(GetCourseByIdQuery request, CancellationToken cancellationToken)
+        {
+
+            var hasCourse = await context.Courses.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+
+
+            if (hasCourse is null)
+                return ServiceResult<CourseDto>.Error("Course not found",
+                    $"The course with id({request.Id}) was not found", HttpStatusCode.NotFound);
+
+            var category = await context.Categories.FindAsync(hasCourse.CategoryId, cancellationToken);
+
+            hasCourse.Category = category!;
+
+
+            var courseAsDto = mapper.Map<CourseDto>(hasCourse);
+            return ServiceResult<CourseDto>.SuccessAsOk(courseAsDto);
+
+        }
+    }
+    public static class GetCourseByIdEndPoint
+    {
+        public static RouteGroupBuilder GetByIdCourseGroupItemEndpoint(this RouteGroupBuilder group)
+        {
+            group.MapGet("/{id:guid}",
+                    async (Guid id,IMediator mediator) =>
+                        (await mediator.Send(new GetCourseByIdQuery(id))).ToGenericResult())
+                .WithName("GetByIdCourses");
+
+            return group;
+        }
+    }
+}

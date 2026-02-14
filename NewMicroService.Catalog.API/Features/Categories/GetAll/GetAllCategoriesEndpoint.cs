@@ -19,9 +19,8 @@
         {
             group.MapGet("/",
                     async (IMediator mediator) =>
-                        (await mediator.Send(new GetAllCategoriesQuery())).ToGenericResult());
-
-
+                        (await mediator.Send(new GetAllCategoriesQuery())).ToGenericResult())
+                .WithName("GetAllCategories");
             return group;
         }
     }
