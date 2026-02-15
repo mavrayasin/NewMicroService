@@ -15,8 +15,8 @@ namespace NewMicroService.Basket.Api.Features.Baskets.RemoveDiscountCoupon;
 public record RemoveDiscountCouponCommand : ServiceResult.IRequestByServiceResult;
 
 public class RemoveDiscountCouponCommandHandler(
-    IIdentityService identityService,
-    IDistributedCache distributedCache,
+    //IIdentityService identityService,
+    //IDistributedCache distributedCache,
     BasketService basketService) : IRequestHandler<RemoveDiscountCouponCommand, ServiceResult>
 {
     public async Task<ServiceResult> Handle(RemoveDiscountCouponCommand request,
